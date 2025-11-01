@@ -78,6 +78,7 @@ fun Registry.generateCommandWrapper(command: Command): String {
                 resultTypes.add("Vec<${pointee.generate()}>")
                 resultExprs.add(current.name.value)
                 preActualStmts.add("let mut ${current.name} = Vec::with_capacity($length as usize);")
+                preActualStmts.add("${current.name}.resize_with($length as usize, Default::default);");
                 postActualStmts.add("${current.name}.set_len($length as usize);")
                 addArgument("${current.name}.as_mut_ptr()")
             }
@@ -129,6 +130,7 @@ fun Registry.generateCommandWrapper(command: Command): String {
 
                     resultExprs.add(slice.name.value)
                     preActualStmts.add("let mut ${slice.name} = Vec::with_capacity($length as usize);")
+                    preActualStmts.add("${slice.name}.resize_with($length as usize, Default::default);");
                     postActualStmts.add("debug_assert!(${slice.name}.capacity() == $length as usize);")
                     postActualStmts.add("${slice.name}.set_len($length as usize);")
                 } else {
