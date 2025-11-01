@@ -5912,6 +5912,7 @@ pub trait KhrCooperativeMatrixExtensionInstanceCommands: InstanceV1_0 {
         );
 
         let mut properties = Vec::with_capacity(property_count as usize);
+        properties.resize_with(property_count as usize, Default::default);
 
         let __result = (self
             .commands()
