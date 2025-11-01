@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Conclusion - Vulkan Tutorial (Rust)</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="A Vulkan tutorial for Rust.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">2.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../development_environment.html"><strong aria-hidden="true">3.</strong> Development environment</a></li><li class="chapter-item expanded "><a href="../faq.html"><strong aria-hidden="true">4.</strong> FAQ</a></li><li class="chapter-item expanded affix "><li class="part-title">Setup</li><li class="chapter-item expanded "><a href="../setup/base_code.html"><strong aria-hidden="true">5.</strong> Base code</a></li><li class="chapter-item expanded "><a href="../setup/instance.html"><strong aria-hidden="true">6.</strong> Instance</a></li><li class="chapter-item expanded "><a href="../setup/validation_layers.html"><strong aria-hidden="true">7.</strong> Validation layers</a></li><li class="chapter-item expanded "><a href="../setup/physical_devices_and_queue_families.html"><strong aria-hidden="true">8.</strong> Physical devices and queue families</a></li><li class="chapter-item expanded "><a href="../setup/logical_device_and_queues.html"><strong aria-hidden="true">9.</strong> Logical device and queues</a></li><li class="chapter-item expanded affix "><li class="part-title">Presentation</li><li class="chapter-item expanded "><a href="../presentation/window_surface.html"><strong aria-hidden="true">10.</strong> Window surface</a></li><li class="chapter-item expanded "><a href="../presentation/swapchain.html"><strong aria-hidden="true">11.</strong> Swapchain</a></li><li class="chapter-item expanded "><a href="../presentation/image_views.html"><strong aria-hidden="true">12.</strong> Image views</a></li><li class="chapter-item expanded affix "><li class="part-title">Pipeline</li><li class="chapter-item expanded "><a href="../pipeline/introduction.html"><strong aria-hidden="true">13.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../pipeline/shader_modules.html"><strong aria-hidden="true">14.</strong> Shader modules</a></li><li class="chapter-item expanded "><a href="../pipeline/fixed_functions.html"><strong aria-hidden="true">15.</strong> Fixed functions</a></li><li class="chapter-item expanded "><a href="../pipeline/render_passes.html"><strong aria-hidden="true">16.</strong> Render passes</a></li><li class="chapter-item expanded "><a href="../pipeline/conclusion.html" class="active"><strong aria-hidden="true">17.</strong> Conclusion</a></li><li class="chapter-item expanded affix "><li class="part-title">Drawing</li><li class="chapter-item expanded "><a href="../drawing/framebuffers.html"><strong aria-hidden="true">18.</strong> Framebuffers</a></li><li class="chapter-item expanded "><a href="../drawing/command_buffers.html"><strong aria-hidden="true">19.</strong> Command buffers</a></li><li class="chapter-item expanded "><a href="../drawing/rendering_and_presentation.html"><strong aria-hidden="true">20.</strong> Rendering and presentation</a></li><li class="chapter-item expanded affix "><li class="part-title">Swapchain</li><li class="chapter-item expanded "><a href="../swapchain/recreation.html"><strong aria-hidden="true">21.</strong> Recreation</a></li><li class="chapter-item expanded affix "><li class="part-title">Vertex buffers</li><li class="chapter-item expanded "><a href="../vertex/vertex_input_description.html"><strong aria-hidden="true">22.</strong> Vertex input description</a></li><li class="chapter-item expanded "><a href="../vertex/vertex_buffer_creation.html"><strong aria-hidden="true">23.</strong> Vertex buffer creation</a></li><li class="chapter-item expanded "><a href="../vertex/staging_buffer.html"><strong aria-hidden="true">24.</strong> Staging buffer</a></li><li class="chapter-item expanded "><a href="../vertex/index_buffer.html"><strong aria-hidden="true">25.</strong> Index buffer</a></li><li class="chapter-item expanded affix "><li class="part-title">Uniform buffers</li><li class="chapter-item expanded "><a href="../uniform/descriptor_set_layout_and_buffer.html"><strong aria-hidden="true">26.</strong> Descriptor set layout and buffer</a></li><li class="chapter-item expanded "><a href="../uniform/descriptor_pool_and_sets.html"><strong aria-hidden="true">27.</strong> Descriptor pool and sets</a></li><li class="chapter-item expanded affix "><li class="part-title">Texture mapping</li><li class="chapter-item expanded "><a href="../texture/images.html"><strong aria-hidden="true">28.</strong> Images</a></li><li class="chapter-item expanded "><a href="../texture/image_view_and_sampler.html"><strong aria-hidden="true">29.</strong> Image view and sampler</a></li><li class="chapter-item expanded "><a href="../texture/combined_image_sampler.html"><strong aria-hidden="true">30.</strong> Combined image sampler</a></li><li class="chapter-item expanded affix "><li class="part-title">Model</li><li class="chapter-item expanded "><a href="../model/depth_buffering.html"><strong aria-hidden="true">31.</strong> Depth buffering</a></li><li class="chapter-item expanded "><a href="../model/loading_models.html"><strong aria-hidden="true">32.</strong> Loading models</a></li><li class="chapter-item expanded affix "><li class="part-title">Rendering quality</li><li class="chapter-item expanded "><a href="../quality/generating_mipmaps.html"><strong aria-hidden="true">33.</strong> Generating mipmaps</a></li><li class="chapter-item expanded "><a href="../quality/multisampling.html"><strong aria-hidden="true">34.</strong> Multisampling</a></li><li class="chapter-item expanded affix "><li class="part-title">Dynamic scenes</li><li class="chapter-item expanded "><a href="../dynamic/push_constants.html"><strong aria-hidden="true">35.</strong> Push constants</a></li><li class="chapter-item expanded "><a href="../dynamic/recycling_command_buffers.html"><strong aria-hidden="true">36.</strong> Recycling command buffers</a></li><li class="chapter-item expanded "><a href="../dynamic/secondary_command_buffers.html"><strong aria-hidden="true">37.</strong> Secondary command buffers</a></li><li class="chapter-item expanded affix "><li class="part-title">Conclusion</li><li class="chapter-item expanded "><a href="../conclusion.html"><strong aria-hidden="true">38.</strong> Conclusion</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Vulkan Tutorial (Rust)</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/KyleMayes/vulkanalia" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h1>
+<p><strong>Code:</strong> <a href="https://github.com/KyleMayes/vulkanalia/tree/master/tutorial/src/12_graphics_pipeline_complete.rs">main.rs</a></p>
+<p>We can now combine all of the structures and objects from the previous chapters to create the graphics pipeline! Here's the types of objects we have now, as a quick recap:</p>
+<ul>
+<li>Shader stages – the shader modules that define the functionality of the programmable stages of the graphics pipeline</li>
+<li>Fixed-function state – all of the structures that define the fixed-function stages of the pipeline, like input assembly, rasterizer, viewport and color blending</li>
+<li>Pipeline layout – the uniform and push values referenced by the shader that can be updated at draw time</li>
+<li>Render pass – the attachments referenced by the pipeline stages and their usage</li>
+</ul>
+<p>All of these combined fully define the functionality of the graphics pipeline, so we can now begin filling in the <a href="https://docs.rs/vulkanalia/0.32.0/vulkanalia/vk/struct.GraphicsPipelineCreateInfo.html"><code class="hljs">vk::GraphicsPipelineCreateInfo</code></a> structure at the end of the <code>create_pipeline</code> function (but before the shader modules are destroyed). But before the calls to <code>DeviceV1_0:::destroy_shader_module</code> because these are still to be used during the creation.</p>
+<pre><code class="language-rust noplaypen">let stages = &amp;[vert_stage, frag_stage];
+let info = vk::GraphicsPipelineCreateInfo::builder()
+    .stages(stages)
+    // continued...
+</code></pre>
+<p>We start by providing an array of the <a href="https://docs.rs/vulkanalia/0.32.0/vulkanalia/vk/struct.PipelineShaderStageCreateInfo.html"><code class="hljs">vk::PipelineShaderStageCreateInfo</code></a> structs.</p>
+<pre><code class="language-rust noplaypen">    .vertex_input_state(&amp;vertex_input_state)
+    .input_assembly_state(&amp;input_assembly_state)
+    .viewport_state(&amp;viewport_state)
+    .rasterization_state(&amp;rasterization_state)
+    .multisample_state(&amp;multisample_state)
+    .color_blend_state(&amp;color_blend_state)
+</code></pre>
+<p>Then we reference all of the structures describing the fixed-function stage.</p>
+<pre><code class="language-rust noplaypen">    .layout(data.pipeline_layout)
+</code></pre>
+<p>After that comes the pipeline layout, which is a Vulkan handle rather than a struct reference.</p>
+<pre><code class="language-rust noplaypen">    .render_pass(data.render_pass)
+    .subpass(0);
+</code></pre>
+<p>And finally we have the reference to the render pass and the index of the sub pass where this graphics pipeline will be used. It is also possible to use other render passes with this pipeline instead of this specific instance, but they have to be <em>compatible</em> with <code>render_pass</code>. The requirements for compatibility are described <a href="https://www.khronos.org/registry/vulkan/specs/1.2/html/vkspec.html#renderpass-compatibility">here</a>, but we won't be using that feature in this tutorial.</p>
+<pre><code class="language-rust noplaypen">    .base_pipeline_handle(vk::Pipeline::null()) // Optional.
+    .base_pipeline_index(-1)                    // Optional.
+</code></pre>
+<p>There are actually two more parameters: <code>base_pipeline_handle</code> and <code>base_pipeline_index</code>. Vulkan allows you to create a new graphics pipeline by deriving from an existing pipeline. The idea of pipeline derivatives is that it is less expensive to set up pipelines when they have much functionality in common with an existing pipeline and switching between pipelines from the same parent can also be done quicker. You can either specify the handle of an existing pipeline with <code>base_pipeline_handle</code> or reference another pipeline that is about to be created by index with <code>base_pipeline_index</code>. Right now there is only a single pipeline, so we'll simply specify a null handle and an invalid index. These values are only used if the <a href="https://docs.rs/vulkanalia/0.32.0/vulkanalia/vk/struct.PipelineCreateFlags.html#associatedconstant.DERIVATIVE"><code class="hljs">vk::PipelineCreateFlags::DERIVATIVE</code></a> flag is also specified in the <code>flags</code> field of <a href="https://docs.rs/vulkanalia/0.32.0/vulkanalia/vk/struct.GraphicsPipelineCreateInfo.html"><code class="hljs">vk::GraphicsPipelineCreateInfo</code></a>.</p>
+<p>Now prepare for the final step by creating a field in <code>AppData</code> to hold the <a href="https://docs.rs/vulkanalia/0.32.0/vulkanalia/vk/struct.Pipeline.html"><code class="hljs">vk::Pipeline</code></a> object:</p>
+<pre><code class="language-rust noplaypen">struct AppData {
+    // ...
+    pipeline: vk::Pipeline,
+}
+</code></pre>
+<p>And finally create the graphics pipeline:</p>
+<pre><code class="language-rust noplaypen">data.pipeline = device.create_graphics_pipelines(
+    vk::PipelineCache::null(), &amp;[info], None)?.0[0];
+</code></pre>
+<p>The <a href="https://docs.rs/vulkanalia/0.32.0/vulkanalia/vk/trait.DeviceV1_0.html#method.create_graphics_pipelines"><code class="hljs">create_graphics_pipelines</code></a> function actually has more parameters than the usual object creation functions in Vulkan. It is designed to take multiple <a href="https://docs.rs/vulkanalia/0.32.0/vulkanalia/vk/struct.GraphicsPipelineCreateInfo.html"><code class="hljs">vk::GraphicsPipelineCreateInfo</code></a> objects and create multiple <a href="https://docs.rs/vulkanalia/0.32.0/vulkanalia/vk/struct.Pipeline.html"><code class="hljs">vk::Pipeline</code></a> objects in a single call.</p>
+<p>The first parameter, for which we've passed the <code>vk::PipelineCache::null()</code> argument, references an optional <a href="https://docs.rs/vulkanalia/0.32.0/vulkanalia/vk/struct.PipelineCache.html"><code class="hljs">vk::PipelineCache</code></a> object. A pipeline cache can be used to store and reuse data relevant to pipeline creation across multiple calls to <a href="https://docs.rs/vulkanalia/0.32.0/vulkanalia/vk/trait.DeviceV1_0.html#method.create_graphics_pipelines"><code class="hljs">create_graphics_pipelines</code></a> and even across program executions if the cache is stored to a file. This makes it possible to significantly speed up pipeline creation at a later time.</p>
+<p>The graphics pipeline is required for all common drawing operations, so it should also only be destroyed at the end of the program in <code>App::destroy</code>:</p>
+<pre><code class="language-rust noplaypen">unsafe fn destroy(&amp;mut self) {
+    self.device.destroy_pipeline(self.data.pipeline, None);
+    // ...
+}
+</code></pre>
+<p>Now run your program to confirm that all this hard work has resulted in a successful pipeline creation! We are already getting quite close to seeing something pop up on the screen. In the next couple of chapters we'll set up the actual framebuffers from the swapchain images and prepare the drawing commands.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../pipeline/render_passes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../drawing/framebuffers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../pipeline/render_passes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../drawing/framebuffers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
