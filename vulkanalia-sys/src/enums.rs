@@ -1389,6 +1389,36 @@ impl fmt::Debug for CubicFilterWeightsQCOM {
     }
 }
 
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VkDataGraphModelCacheTypeQCOM.html>
+#[repr(transparent)]
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Default)]
+pub struct DataGraphModelCacheTypeQCOM(i32);
+
+impl DataGraphModelCacheTypeQCOM {
+    pub const GENERIC_BINARY: Self = Self(0);
+
+    /// Constructs an instance of this enum with the supplied underlying value.
+    #[inline]
+    pub const fn from_raw(value: i32) -> Self {
+        Self(value)
+    }
+
+    /// Gets the underlying value for this enum instance.
+    #[inline]
+    pub const fn as_raw(self) -> i32 {
+        self.0
+    }
+}
+
+impl fmt::Debug for DataGraphModelCacheTypeQCOM {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self.0 {
+            0 => write!(f, "GENERIC_BINARY"),
+            _ => self.0.fmt(f),
+        }
+    }
+}
+
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VkDataGraphPipelinePropertyARM.html>
 #[repr(transparent)]
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Default)]
@@ -4562,6 +4592,8 @@ pub struct PhysicalDeviceDataGraphOperationTypeARM(i32);
 
 impl PhysicalDeviceDataGraphOperationTypeARM {
     pub const SPIRV_EXTENDED_INSTRUCTION_SET: Self = Self(0);
+    pub const NEURAL_MODEL_QCOM: Self = Self(1000629000);
+    pub const BUILTIN_MODEL_QCOM: Self = Self(1000629001);
 
     /// Constructs an instance of this enum with the supplied underlying value.
     #[inline]
@@ -4580,6 +4612,8 @@ impl fmt::Debug for PhysicalDeviceDataGraphOperationTypeARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self.0 {
             0 => write!(f, "SPIRV_EXTENDED_INSTRUCTION_SET"),
+            1000629000 => write!(f, "NEURAL_MODEL_QCOM"),
+            1000629001 => write!(f, "BUILTIN_MODEL_QCOM"),
             _ => self.0.fmt(f),
         }
     }
@@ -4592,6 +4626,8 @@ pub struct PhysicalDeviceDataGraphProcessingEngineTypeARM(i32);
 
 impl PhysicalDeviceDataGraphProcessingEngineTypeARM {
     pub const DEFAULT: Self = Self(0);
+    pub const NEURAL_QCOM: Self = Self(1000629000);
+    pub const COMPUTE_QCOM: Self = Self(1000629001);
 
     /// Constructs an instance of this enum with the supplied underlying value.
     #[inline]
@@ -4610,6 +4646,8 @@ impl fmt::Debug for PhysicalDeviceDataGraphProcessingEngineTypeARM {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self.0 {
             0 => write!(f, "DEFAULT"),
+            1000629000 => write!(f, "NEURAL_QCOM"),
+            1000629001 => write!(f, "COMPUTE_QCOM"),
             _ => self.0.fmt(f),
         }
     }
@@ -4738,6 +4776,7 @@ pub struct PipelineCacheHeaderVersion(i32);
 
 impl PipelineCacheHeaderVersion {
     pub const ONE: Self = Self(1);
+    pub const DATA_GRAPH_QCOM: Self = Self(1000629000);
 
     /// Constructs an instance of this enum with the supplied underlying value.
     #[inline]
@@ -4756,6 +4795,7 @@ impl fmt::Debug for PipelineCacheHeaderVersion {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self.0 {
             1 => write!(f, "ONE"),
+            1000629000 => write!(f, "DATA_GRAPH_QCOM"),
             _ => self.0.fmt(f),
         }
     }
@@ -5261,12 +5301,12 @@ impl fmt::Debug for RasterizationOrderAMD {
     }
 }
 
-/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VkRayTracingInvocationReorderModeNV.html>
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VkRayTracingInvocationReorderModeEXT.html>
 #[repr(transparent)]
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Default)]
-pub struct RayTracingInvocationReorderModeNV(i32);
+pub struct RayTracingInvocationReorderModeEXT(i32);
 
-impl RayTracingInvocationReorderModeNV {
+impl RayTracingInvocationReorderModeEXT {
     pub const NONE: Self = Self(0);
     pub const REORDER: Self = Self(1);
 
@@ -5283,7 +5323,7 @@ impl RayTracingInvocationReorderModeNV {
     }
 }
 
-impl fmt::Debug for RayTracingInvocationReorderModeNV {
+impl fmt::Debug for RayTracingInvocationReorderModeEXT {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self.0 {
             0 => write!(f, "NONE"),
@@ -5436,6 +5476,7 @@ impl Result {
     pub const ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR: Self = Self(-1000023004);
     pub const ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR: Self = Self(-1000023005);
     pub const ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT: Self = Self(-1000158000);
+    pub const ERROR_PRESENT_TIMING_QUEUE_FULL_EXT: Self = Self(-1000208000);
     pub const ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT: Self = Self(-1000255000);
     pub const THREAD_IDLE_KHR: Self = Self(1000268000);
     pub const THREAD_DONE_KHR: Self = Self(1000268001);
@@ -5502,6 +5543,7 @@ impl fmt::Debug for Result {
             -1000023004 => write!(f, "ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR"),
             -1000023005 => write!(f, "ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR"),
             -1000158000 => write!(f, "ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT"),
+            -1000208000 => write!(f, "ERROR_PRESENT_TIMING_QUEUE_FULL_EXT"),
             -1000255000 => write!(f, "ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT"),
             1000268000 => write!(f, "THREAD_IDLE_KHR"),
             1000268001 => write!(f, "THREAD_DONE_KHR"),
@@ -5559,6 +5601,7 @@ impl fmt::Display for Result {
             -1000023004 => write!(f, "Codec-specific parameters in a requested VkVideoProfileInfoKHR chain are not supported."),
             -1000023005 => write!(f, "The specified video Std header version is not supported."),
             -1000158000 => write!(f, "ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT"),
+            -1000208000 => write!(f, "ERROR_PRESENT_TIMING_QUEUE_FULL_EXT"),
             -1000255000 => write!(f, "An operation on a swapchain created with VK_FULL_SCREEN_EXCLUSIVE_APPLICATION_CONTROLLED_EXT failed as it did not have exclusive full-screen access. This may occur due to implementation-dependent reasons, outside of the application's control."),
             1000268000 => write!(f, "A deferred operation is not complete but there is currently no work for this thread to do at the time of this call."),
             1000268001 => write!(f, "A deferred operation is not complete but there is no work remaining to assign to additional threads."),
@@ -6688,6 +6731,16 @@ impl StructureType {
     pub const QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV: Self = Self(1000206001);
     pub const QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV: Self = Self(1000314008);
     pub const CHECKPOINT_DATA_2_NV: Self = Self(1000314009);
+    pub const PHYSICAL_DEVICE_PRESENT_TIMING_FEATURES_EXT: Self = Self(1000208000);
+    pub const SWAPCHAIN_TIMING_PROPERTIES_EXT: Self = Self(1000208001);
+    pub const SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT: Self = Self(1000208002);
+    pub const PRESENT_TIMINGS_INFO_EXT: Self = Self(1000208003);
+    pub const PRESENT_TIMING_INFO_EXT: Self = Self(1000208004);
+    pub const PAST_PRESENTATION_TIMING_INFO_EXT: Self = Self(1000208005);
+    pub const PAST_PRESENTATION_TIMING_PROPERTIES_EXT: Self = Self(1000208006);
+    pub const PAST_PRESENTATION_TIMING_EXT: Self = Self(1000208007);
+    pub const PRESENT_TIMING_SURFACE_CAPABILITIES_EXT: Self = Self(1000208008);
+    pub const SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT: Self = Self(1000208009);
     pub const PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL: Self = Self(1000209000);
     pub const QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL: Self = Self(1000210000);
     pub const INITIALIZE_PERFORMANCE_API_INFO_INTEL: Self = Self(1000210001);
@@ -7273,6 +7326,9 @@ impl StructureType {
     pub const PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA: Self = Self(1000575001);
     pub const IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA: Self = Self(1000575002);
     pub const PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR: Self = Self(1000579000);
+    pub const PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT: Self = Self(1000581000);
+    pub const PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT: Self =
+        Self(1000581001);
     pub const PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT: Self = Self(1000582000);
     pub const PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT: Self = Self(1000582001);
     pub const PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR: Self = Self(1000584000);
@@ -7318,6 +7374,11 @@ impl StructureType {
     pub const PHYSICAL_DEVICE_ZERO_INITIALIZE_DEVICE_MEMORY_FEATURES_EXT: Self = Self(1000620000);
     pub const PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR: Self = Self(1000361000);
     pub const PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT: Self = Self(1000627000);
+    pub const PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT: Self = Self(1000628000);
+    pub const BEGIN_CUSTOM_RESOLVE_INFO_EXT: Self = Self(1000628001);
+    pub const CUSTOM_RESOLVE_CREATE_INFO_EXT: Self = Self(1000628002);
+    pub const PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM: Self = Self(1000629000);
+    pub const DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM: Self = Self(1000629001);
     pub const PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR: Self = Self(1000630000);
     pub const PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR: Self = Self(1000630001);
     pub const RENDERING_ATTACHMENT_FLAGS_INFO_KHR: Self = Self(1000630002);
@@ -7913,6 +7974,16 @@ impl fmt::Debug for StructureType {
             1000206001 => write!(f, "QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV"),
             1000314008 => write!(f, "QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV"),
             1000314009 => write!(f, "CHECKPOINT_DATA_2_NV"),
+            1000208000 => write!(f, "PHYSICAL_DEVICE_PRESENT_TIMING_FEATURES_EXT"),
+            1000208001 => write!(f, "SWAPCHAIN_TIMING_PROPERTIES_EXT"),
+            1000208002 => write!(f, "SWAPCHAIN_TIME_DOMAIN_PROPERTIES_EXT"),
+            1000208003 => write!(f, "PRESENT_TIMINGS_INFO_EXT"),
+            1000208004 => write!(f, "PRESENT_TIMING_INFO_EXT"),
+            1000208005 => write!(f, "PAST_PRESENTATION_TIMING_INFO_EXT"),
+            1000208006 => write!(f, "PAST_PRESENTATION_TIMING_PROPERTIES_EXT"),
+            1000208007 => write!(f, "PAST_PRESENTATION_TIMING_EXT"),
+            1000208008 => write!(f, "PRESENT_TIMING_SURFACE_CAPABILITIES_EXT"),
+            1000208009 => write!(f, "SWAPCHAIN_CALIBRATED_TIMESTAMP_INFO_EXT"),
             1000209000 => write!(
                 f,
                 "PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL"
@@ -8681,6 +8752,14 @@ impl fmt::Debug for StructureType {
             1000575001 => write!(f, "PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA"),
             1000575002 => write!(f, "IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA"),
             1000579000 => write!(f, "PHYSICAL_DEVICE_SHADER_FMA_FEATURES_KHR"),
+            1000581000 => write!(
+                f,
+                "PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_EXT"
+            ),
+            1000581001 => write!(
+                f,
+                "PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_EXT"
+            ),
             1000582000 => write!(f, "PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT"),
             1000582001 => write!(f, "PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT"),
             1000584000 => write!(f, "PHYSICAL_DEVICE_MAINTENANCE_9_FEATURES_KHR"),
@@ -8754,6 +8833,11 @@ impl fmt::Debug for StructureType {
                 "PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_KHR"
             ),
             1000627000 => write!(f, "PHYSICAL_DEVICE_SHADER_64_BIT_INDEXING_FEATURES_EXT"),
+            1000628000 => write!(f, "PHYSICAL_DEVICE_CUSTOM_RESOLVE_FEATURES_EXT"),
+            1000628001 => write!(f, "BEGIN_CUSTOM_RESOLVE_INFO_EXT"),
+            1000628002 => write!(f, "CUSTOM_RESOLVE_CREATE_INFO_EXT"),
+            1000629000 => write!(f, "PHYSICAL_DEVICE_DATA_GRAPH_MODEL_FEATURES_QCOM"),
+            1000629001 => write!(f, "DATA_GRAPH_PIPELINE_BUILTIN_MODEL_CREATE_INFO_QCOM"),
             1000630000 => write!(f, "PHYSICAL_DEVICE_MAINTENANCE_10_FEATURES_KHR"),
             1000630001 => write!(f, "PHYSICAL_DEVICE_MAINTENANCE_10_PROPERTIES_KHR"),
             1000630002 => write!(f, "RENDERING_ATTACHMENT_FLAGS_INFO_KHR"),
@@ -8974,6 +9058,8 @@ impl TimeDomainKHR {
     pub const CLOCK_MONOTONIC: Self = Self(1);
     pub const CLOCK_MONOTONIC_RAW: Self = Self(2);
     pub const QUERY_PERFORMANCE_COUNTER: Self = Self(3);
+    pub const PRESENT_STAGE_LOCAL_EXT: Self = Self(1000208000);
+    pub const SWAPCHAIN_LOCAL_EXT: Self = Self(1000208001);
 
     /// Constructs an instance of this enum with the supplied underlying value.
     #[inline]
@@ -8995,6 +9081,8 @@ impl fmt::Debug for TimeDomainKHR {
             1 => write!(f, "CLOCK_MONOTONIC"),
             2 => write!(f, "CLOCK_MONOTONIC_RAW"),
             3 => write!(f, "QUERY_PERFORMANCE_COUNTER"),
+            1000208000 => write!(f, "PRESENT_STAGE_LOCAL_EXT"),
+            1000208001 => write!(f, "SWAPCHAIN_LOCAL_EXT"),
             _ => self.0.fmt(f),
         }
     }
@@ -9403,6 +9491,8 @@ pub type PointClippingBehaviorKHR = PointClippingBehavior;
 pub type QueueGlobalPriorityEXT = QueueGlobalPriority;
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VkQueueGlobalPriorityKHR.html>
 pub type QueueGlobalPriorityKHR = QueueGlobalPriority;
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VkRayTracingInvocationReorderModeNV.html>
+pub type RayTracingInvocationReorderModeNV = RayTracingInvocationReorderModeEXT;
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VkRayTracingShaderGroupTypeNV.html>
 pub type RayTracingShaderGroupTypeNV = RayTracingShaderGroupTypeKHR;
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VkSamplerReductionModeEXT.html>
