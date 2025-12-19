@@ -908,6 +908,22 @@ pub const EXT_CUSTOM_BORDER_COLOR_EXTENSION: Extension = Extension {
     promoted_to: None,
 };
 
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_EXT_custom_resolve.html>
+#[allow(deprecated)]
+pub const EXT_CUSTOM_RESOLVE_EXTENSION: Extension = Extension {
+    name: ExtensionName::from_bytes(b"VK_EXT_custom_resolve"),
+    number: 629,
+    type_: "device",
+    author: "EXT",
+    contact: "Mike Blumenkrantz @zmike",
+    platform: None,
+    required_extensions: None,
+    required_version: None,
+    deprecated_by: None,
+    obsoleted_by: None,
+    promoted_to: None,
+};
+
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_EXT_debug_marker.html>
 #[allow(deprecated)]
 pub const EXT_DEBUG_MARKER_EXTENSION: Extension = Extension {
@@ -2189,6 +2205,22 @@ pub const EXT_PRESENT_MODE_FIFO_LATEST_READY_EXTENSION: Extension = Extension {
     promoted_to: Some("VK_KHR_present_mode_fifo_latest_ready"),
 };
 
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_EXT_present_timing.html>
+#[allow(deprecated)]
+pub const EXT_PRESENT_TIMING_EXTENSION: Extension = Extension {
+    name: ExtensionName::from_bytes(b"VK_EXT_present_timing"),
+    number: 209,
+    type_: "device",
+    author: "EXT",
+    contact: "Lionel Duc @nvlduc",
+    platform: None,
+    required_extensions: None,
+    required_version: None,
+    deprecated_by: None,
+    obsoleted_by: None,
+    promoted_to: None,
+};
+
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_EXT_primitive_topology_list_restart.html>
 #[allow(deprecated)]
 pub const EXT_PRIMITIVE_TOPOLOGY_LIST_RESTART_EXTENSION: Extension = Extension {
@@ -2277,6 +2309,22 @@ pub const EXT_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_EXTENSION: Extension = Exten
     type_: "device",
     author: "ARM",
     contact: "Jan-Harald Fredriksen @janharaldfredriksen-arm",
+    platform: None,
+    required_extensions: None,
+    required_version: None,
+    deprecated_by: None,
+    obsoleted_by: None,
+    promoted_to: None,
+};
+
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_EXT_ray_tracing_invocation_reorder.html>
+#[allow(deprecated)]
+pub const EXT_RAY_TRACING_INVOCATION_REORDER_EXTENSION: Extension = Extension {
+    name: ExtensionName::from_bytes(b"VK_EXT_ray_tracing_invocation_reorder"),
+    number: 582,
+    type_: "device",
+    author: "EXT",
+    contact: "Eric Werness @ewerness-nv",
     platform: None,
     required_extensions: None,
     required_version: None,
@@ -2469,6 +2517,22 @@ pub const EXT_SHADER_IMAGE_ATOMIC_INT64_EXTENSION: Extension = Extension {
     type_: "device",
     author: "EXT",
     contact: "Tobias Hector @tobski",
+    platform: None,
+    required_extensions: None,
+    required_version: None,
+    deprecated_by: None,
+    obsoleted_by: None,
+    promoted_to: None,
+};
+
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_EXT_shader_long_vector.html>
+#[allow(deprecated)]
+pub const EXT_SHADER_LONG_VECTOR_EXTENSION: Extension = Extension {
+    name: ExtensionName::from_bytes(b"VK_EXT_shader_long_vector"),
+    number: 636,
+    type_: "device",
+    author: "EXT",
+    contact: "Jeff Bolz @jeffbolznv",
     platform: None,
     required_extensions: None,
     required_version: None,
@@ -2717,6 +2781,22 @@ pub const EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION: Extension = Extension {
     deprecated_by: None,
     obsoleted_by: None,
     promoted_to: Some("VK_VERSION_1_3"),
+};
+
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_EXT_texture_compression_astc_3d.html>
+#[allow(deprecated)]
+pub const EXT_TEXTURE_COMPRESSION_ASTC_3D_EXTENSION: Extension = Extension {
+    name: ExtensionName::from_bytes(b"VK_EXT_texture_compression_astc_3d"),
+    number: 289,
+    type_: "device",
+    author: "EXT",
+    contact: "Jan-Harald Fredriksen @janharaldfredriksen-arm",
+    platform: None,
+    required_extensions: None,
+    required_version: None,
+    deprecated_by: None,
+    obsoleted_by: None,
+    promoted_to: None,
 };
 
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_EXT_texture_compression_astc_hdr.html>
@@ -5708,6 +5788,22 @@ pub const NV_COMMAND_BUFFER_INHERITANCE_EXTENSION: Extension = Extension {
     promoted_to: None,
 };
 
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_NV_compute_occupancy_priority.html>
+#[allow(deprecated)]
+pub const NV_COMPUTE_OCCUPANCY_PRIORITY_EXTENSION: Extension = Extension {
+    name: ExtensionName::from_bytes(b"VK_NV_compute_occupancy_priority"),
+    number: 646,
+    type_: "device",
+    author: "NV",
+    contact: "Chris Lentini @clentini",
+    platform: None,
+    required_extensions: None,
+    required_version: None,
+    deprecated_by: None,
+    obsoleted_by: None,
+    promoted_to: None,
+};
+
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_NV_compute_shader_derivatives.html>
 #[allow(deprecated)]
 pub const NV_COMPUTE_SHADER_DERIVATIVES_EXTENSION: Extension = Extension {
@@ -6505,7 +6601,7 @@ pub const NV_RAY_TRACING_INVOCATION_REORDER_EXTENSION: Extension = Extension {
     required_version: None,
     deprecated_by: None,
     obsoleted_by: None,
-    promoted_to: None,
+    promoted_to: Some("VK_EXT_ray_tracing_invocation_reorder"),
 };
 
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_NV_ray_tracing_linear_swept_spheres.html>
@@ -6748,12 +6844,12 @@ pub const OHOS_EXTERNAL_MEMORY_EXTENSION: Extension = Extension {
     promoted_to: None,
 };
 
-/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_OHOS_native_buffer.html>
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_OHOS_surface.html>
 #[allow(deprecated)]
-pub const OHOS_NATIVE_BUFFER_EXTENSION: Extension = Extension {
-    name: ExtensionName::from_bytes(b"VK_OHOS_native_buffer"),
-    number: 589,
-    type_: "device",
+pub const OHOS_SURFACE_EXTENSION: Extension = Extension {
+    name: ExtensionName::from_bytes(b"VK_OHOS_surface"),
+    number: 588,
+    type_: "instance",
     author: "HUAWEI",
     contact: "Weilan Chen @wchen-h",
     platform: Some("ohos"),
@@ -6764,15 +6860,15 @@ pub const OHOS_NATIVE_BUFFER_EXTENSION: Extension = Extension {
     promoted_to: None,
 };
 
-/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_OHOS_surface.html>
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_QCOM_data_graph_model.html>
 #[allow(deprecated)]
-pub const OHOS_SURFACE_EXTENSION: Extension = Extension {
-    name: ExtensionName::from_bytes(b"VK_OHOS_surface"),
-    number: 588,
-    type_: "instance",
-    author: "HUAWEI",
-    contact: "Weilan Chen @wchen-h",
-    platform: Some("ohos"),
+pub const QCOM_DATA_GRAPH_MODEL_EXTENSION: Extension = Extension {
+    name: ExtensionName::from_bytes(b"VK_QCOM_data_graph_model"),
+    number: 630,
+    type_: "device",
+    author: "QCOM",
+    contact: "Matthew Netsch @mnetsch",
+    platform: None,
     required_extensions: None,
     required_version: None,
     deprecated_by: None,
@@ -6905,7 +7001,7 @@ pub const QCOM_RENDER_PASS_SHADER_RESOLVE_EXTENSION: Extension = Extension {
     required_version: None,
     deprecated_by: None,
     obsoleted_by: None,
-    promoted_to: None,
+    promoted_to: Some("VK_EXT_custom_resolve"),
 };
 
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/VK_QCOM_render_pass_store_ops.html>
