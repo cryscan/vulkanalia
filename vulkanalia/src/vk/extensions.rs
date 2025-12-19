@@ -1171,6 +1171,24 @@ pub trait ExtConditionalRenderingExtensionDeviceCommands: DeviceV1_0 {
 
 impl<C: DeviceV1_0 + ?Sized> ExtConditionalRenderingExtensionDeviceCommands for C {}
 
+/// The device-level commands added by [`EXT_CUSTOM_RESOLVE_EXTENSION`].
+pub trait ExtCustomResolveExtensionDeviceCommands: DeviceV1_0 {
+    /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkCmdBeginCustomResolveEXT.html>
+    #[inline]
+    unsafe fn cmd_begin_custom_resolve_ext(
+        &self,
+        command_buffer: CommandBuffer,
+        begin_custom_resolve_info: Option<&BeginCustomResolveInfoEXT>,
+    ) {
+        let __result = (self.commands().cmd_begin_custom_resolve_ext)(
+            command_buffer,
+            begin_custom_resolve_info.map_or(ptr::null(), |v| v),
+        );
+    }
+}
+
+impl<C: DeviceV1_0 + ?Sized> ExtCustomResolveExtensionDeviceCommands for C {}
+
 /// The device-level commands added by [`EXT_DEBUG_MARKER_EXTENSION`].
 pub trait ExtDebugMarkerExtensionDeviceCommands: DeviceV1_0 {
     /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkCmdDebugMarkerBeginEXT.html>
@@ -3646,6 +3664,100 @@ pub trait ExtPipelinePropertiesExtensionDeviceCommands: DeviceV1_0 {
 }
 
 impl<C: DeviceV1_0 + ?Sized> ExtPipelinePropertiesExtensionDeviceCommands for C {}
+
+/// The device-level commands added by [`EXT_PRESENT_TIMING_EXTENSION`].
+pub trait ExtPresentTimingExtensionDeviceCommands: DeviceV1_0 {
+    /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetPastPresentationTimingEXT.html>
+    #[inline]
+    unsafe fn get_past_presentation_timing_ext(
+        &self,
+        past_presentation_timing_info: &PastPresentationTimingInfoEXT,
+        past_presentation_timing_properties: &mut PastPresentationTimingPropertiesEXT,
+    ) -> crate::VkResult<()> {
+        let __result = (self.commands().get_past_presentation_timing_ext)(
+            self.handle(),
+            past_presentation_timing_info,
+            past_presentation_timing_properties,
+        );
+
+        if __result == Result::SUCCESS {
+            Ok(())
+        } else {
+            Err(__result.into())
+        }
+    }
+
+    /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetSwapchainTimeDomainPropertiesEXT.html>
+    #[inline]
+    unsafe fn get_swapchain_time_domain_properties_ext(
+        &self,
+        swapchain: SwapchainKHR,
+        swapchain_time_domain_properties: &mut SwapchainTimeDomainPropertiesEXT,
+    ) -> crate::VkResult<u64> {
+        let mut time_domains_counter = MaybeUninit::<u64>::uninit();
+
+        let __result = (self.commands().get_swapchain_time_domain_properties_ext)(
+            self.handle(),
+            swapchain,
+            swapchain_time_domain_properties,
+            time_domains_counter.as_mut_ptr(),
+        );
+
+        if __result == Result::SUCCESS {
+            Ok(time_domains_counter.assume_init())
+        } else {
+            Err(__result.into())
+        }
+    }
+
+    /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetSwapchainTimingPropertiesEXT.html>
+    #[inline]
+    unsafe fn get_swapchain_timing_properties_ext(
+        &self,
+        swapchain: SwapchainKHR,
+        swapchain_timing_properties: &mut SwapchainTimingPropertiesEXT,
+    ) -> crate::VkSuccessResult<u64> {
+        let mut swapchain_timing_properties_counter = MaybeUninit::<u64>::uninit();
+
+        let __result = (self.commands().get_swapchain_timing_properties_ext)(
+            self.handle(),
+            swapchain,
+            swapchain_timing_properties,
+            swapchain_timing_properties_counter.as_mut_ptr(),
+        );
+
+        if __result >= Result::SUCCESS {
+            Ok((
+                swapchain_timing_properties_counter.assume_init(),
+                __result.into(),
+            ))
+        } else {
+            Err(__result.into())
+        }
+    }
+
+    /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkSetSwapchainPresentTimingQueueSizeEXT.html>
+    #[inline]
+    unsafe fn set_swapchain_present_timing_queue_size_ext(
+        &self,
+        swapchain: SwapchainKHR,
+        size: u32,
+    ) -> crate::VkResult<SuccessCode> {
+        let __result = (self.commands().set_swapchain_present_timing_queue_size_ext)(
+            self.handle(),
+            swapchain,
+            size,
+        );
+
+        if __result >= Result::SUCCESS {
+            Ok(__result.into())
+        } else {
+            Err(__result.into())
+        }
+    }
+}
+
+impl<C: DeviceV1_0 + ?Sized> ExtPresentTimingExtensionDeviceCommands for C {}
 
 /// The device-level commands added by [`EXT_PRIVATE_DATA_EXTENSION`].
 pub trait ExtPrivateDataExtensionDeviceCommands: DeviceV1_0 {
@@ -10002,6 +10114,22 @@ pub trait NvClusterAccelerationStructureExtensionDeviceCommands: DeviceV1_0 {
 
 impl<C: DeviceV1_0 + ?Sized> NvClusterAccelerationStructureExtensionDeviceCommands for C {}
 
+/// The device-level commands added by [`NV_COMPUTE_OCCUPANCY_PRIORITY_EXTENSION`].
+pub trait NvComputeOccupancyPriorityExtensionDeviceCommands: DeviceV1_0 {
+    /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkCmdSetComputeOccupancyPriorityNV.html>
+    #[inline]
+    unsafe fn cmd_set_compute_occupancy_priority_nv(
+        &self,
+        command_buffer: CommandBuffer,
+        parameters: &ComputeOccupancyPriorityParametersNV,
+    ) {
+        let __result =
+            (self.commands().cmd_set_compute_occupancy_priority_nv)(command_buffer, parameters);
+    }
+}
+
+impl<C: DeviceV1_0 + ?Sized> NvComputeOccupancyPriorityExtensionDeviceCommands for C {}
+
 /// The instance-level commands added by [`NV_COOPERATIVE_MATRIX_EXTENSION`].
 pub trait NvCooperativeMatrixExtensionInstanceCommands: InstanceV1_0 {
     /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetPhysicalDeviceCooperativeMatrixPropertiesNV.html>
@@ -11848,83 +11976,6 @@ pub trait OhosExternalMemoryExtensionDeviceCommands: DeviceV1_0 {
 }
 
 impl<C: DeviceV1_0 + ?Sized> OhosExternalMemoryExtensionDeviceCommands for C {}
-
-/// The device-level commands added by [`OHOS_NATIVE_BUFFER_EXTENSION`].
-pub trait OhosNativeBufferExtensionDeviceCommands: DeviceV1_0 {
-    /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkAcquireImageOHOS.html>
-    #[inline]
-    unsafe fn acquire_image_ohos(
-        &self,
-        image: Image,
-        native_fence_fd: i32,
-        semaphore: Semaphore,
-        fence: Fence,
-    ) -> crate::VkResult<()> {
-        let __result = (self.commands().acquire_image_ohos)(
-            self.handle(),
-            image,
-            native_fence_fd,
-            semaphore,
-            fence,
-        );
-
-        if __result == Result::SUCCESS {
-            Ok(())
-        } else {
-            Err(__result.into())
-        }
-    }
-
-    /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetSwapchainGrallocUsageOHOS.html>
-    #[inline]
-    unsafe fn get_swapchain_gralloc_usage_ohos(
-        &self,
-        format: Format,
-        image_usage: ImageUsageFlags,
-    ) -> crate::VkResult<u64> {
-        let mut gralloc_usage = MaybeUninit::<u64>::uninit();
-
-        let __result = (self.commands().get_swapchain_gralloc_usage_ohos)(
-            self.handle(),
-            format,
-            image_usage,
-            gralloc_usage.as_mut_ptr(),
-        );
-
-        if __result == Result::SUCCESS {
-            Ok(gralloc_usage.assume_init())
-        } else {
-            Err(__result.into())
-        }
-    }
-
-    /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkQueueSignalReleaseImageOHOS.html>
-    #[inline]
-    unsafe fn queue_signal_release_image_ohos(
-        &self,
-        queue: Queue,
-        wait_semaphores: &[Semaphore],
-        image: Image,
-    ) -> crate::VkResult<i32> {
-        let mut native_fence_fd = MaybeUninit::<i32>::uninit();
-
-        let __result = (self.commands().queue_signal_release_image_ohos)(
-            queue,
-            wait_semaphores.len() as u32,
-            wait_semaphores.as_ptr(),
-            image,
-            native_fence_fd.as_mut_ptr(),
-        );
-
-        if __result == Result::SUCCESS {
-            Ok(native_fence_fd.assume_init())
-        } else {
-            Err(__result.into())
-        }
-    }
-}
-
-impl<C: DeviceV1_0 + ?Sized> OhosNativeBufferExtensionDeviceCommands for C {}
 
 /// The instance-level commands added by [`OHOS_SURFACE_EXTENSION`].
 pub trait OhosSurfaceExtensionInstanceCommands: InstanceV1_0 {

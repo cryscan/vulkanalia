@@ -35,15 +35,6 @@ pub type PFN_vkAcquireDrmDisplayEXT = unsafe extern "system" fn(
 pub type PFN_vkAcquireFullScreenExclusiveModeEXT =
     unsafe extern "system" fn(_device: Device, _swapchain: SwapchainKHR) -> Result;
 
-/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkAcquireImageOHOS.html>
-pub type PFN_vkAcquireImageOHOS = unsafe extern "system" fn(
-    _device: Device,
-    _image: Image,
-    _native_fence_fd: i32,
-    _semaphore: Semaphore,
-    _fence: Fence,
-) -> Result;
-
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkAcquireNextImage2KHR.html>
 pub type PFN_vkAcquireNextImage2KHR = unsafe extern "system" fn(
     _device: Device,
@@ -210,6 +201,12 @@ pub type PFN_vkBuildMicromapsEXT = unsafe extern "system" fn(
 pub type PFN_vkCmdBeginConditionalRenderingEXT = unsafe extern "system" fn(
     _command_buffer: CommandBuffer,
     _conditional_rendering_begin: *const ConditionalRenderingBeginInfoEXT,
+);
+
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkCmdBeginCustomResolveEXT.html>
+pub type PFN_vkCmdBeginCustomResolveEXT = unsafe extern "system" fn(
+    _command_buffer: CommandBuffer,
+    _begin_custom_resolve_info: *const BeginCustomResolveInfoEXT,
 );
 
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkCmdBeginDebugUtilsLabelEXT.html>
@@ -1341,6 +1338,12 @@ pub type PFN_vkCmdSetColorWriteMaskEXT = unsafe extern "system" fn(
     _first_attachment: u32,
     _attachment_count: u32,
     _color_write_masks: *const ColorComponentFlags,
+);
+
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkCmdSetComputeOccupancyPriorityNV.html>
+pub type PFN_vkCmdSetComputeOccupancyPriorityNV = unsafe extern "system" fn(
+    _command_buffer: CommandBuffer,
+    _parameters: *const ComputeOccupancyPriorityParametersNV,
 );
 
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkCmdSetConservativeRasterizationModeEXT.html>
@@ -3909,6 +3912,13 @@ pub type PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV = unsafe extern 
     _size_info: *mut AccelerationStructureBuildSizesInfoKHR,
 );
 
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetPastPresentationTimingEXT.html>
+pub type PFN_vkGetPastPresentationTimingEXT = unsafe extern "system" fn(
+    _device: Device,
+    _past_presentation_timing_info: *const PastPresentationTimingInfoEXT,
+    _past_presentation_timing_properties: *mut PastPresentationTimingPropertiesEXT,
+) -> Result;
+
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetPastPresentationTimingGOOGLE.html>
 pub type PFN_vkGetPastPresentationTimingGOOGLE = unsafe extern "system" fn(
     _device: Device,
@@ -4658,14 +4668,6 @@ pub type PFN_vkGetSwapchainCounterEXT = unsafe extern "system" fn(
     _counter_value: *mut u64,
 ) -> Result;
 
-/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetSwapchainGrallocUsageOHOS.html>
-pub type PFN_vkGetSwapchainGrallocUsageOHOS = unsafe extern "system" fn(
-    _device: Device,
-    _format: Format,
-    _image_usage: ImageUsageFlags,
-    _gralloc_usage: *mut u64,
-) -> Result;
-
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetSwapchainImagesKHR.html>
 pub type PFN_vkGetSwapchainImagesKHR = unsafe extern "system" fn(
     _device: Device,
@@ -4677,6 +4679,22 @@ pub type PFN_vkGetSwapchainImagesKHR = unsafe extern "system" fn(
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetSwapchainStatusKHR.html>
 pub type PFN_vkGetSwapchainStatusKHR =
     unsafe extern "system" fn(_device: Device, _swapchain: SwapchainKHR) -> Result;
+
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetSwapchainTimeDomainPropertiesEXT.html>
+pub type PFN_vkGetSwapchainTimeDomainPropertiesEXT = unsafe extern "system" fn(
+    _device: Device,
+    _swapchain: SwapchainKHR,
+    _swapchain_time_domain_properties: *mut SwapchainTimeDomainPropertiesEXT,
+    _time_domains_counter: *mut u64,
+) -> Result;
+
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetSwapchainTimingPropertiesEXT.html>
+pub type PFN_vkGetSwapchainTimingPropertiesEXT = unsafe extern "system" fn(
+    _device: Device,
+    _swapchain: SwapchainKHR,
+    _swapchain_timing_properties: *mut SwapchainTimingPropertiesEXT,
+    _swapchain_timing_properties_counter: *mut u64,
+) -> Result;
 
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkGetTensorMemoryRequirementsARM.html>
 pub type PFN_vkGetTensorMemoryRequirementsARM = unsafe extern "system" fn(
@@ -4857,15 +4875,6 @@ pub type PFN_vkQueuePresentKHR =
 pub type PFN_vkQueueSetPerformanceConfigurationINTEL = unsafe extern "system" fn(
     _queue: Queue,
     _configuration: PerformanceConfigurationINTEL,
-) -> Result;
-
-/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkQueueSignalReleaseImageOHOS.html>
-pub type PFN_vkQueueSignalReleaseImageOHOS = unsafe extern "system" fn(
-    _queue: Queue,
-    _wait_semaphore_count: u32,
-    _wait_semaphores: *const Semaphore,
-    _image: Image,
-    _native_fence_fd: *mut i32,
 ) -> Result;
 
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkQueueSubmit.html>
@@ -5051,6 +5060,10 @@ pub type PFN_vkSetPrivateData = unsafe extern "system" fn(
 
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkSetPrivateDataEXT.html>
 pub type PFN_vkSetPrivateDataEXT = PFN_vkSetPrivateData;
+
+/// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkSetSwapchainPresentTimingQueueSizeEXT.html>
+pub type PFN_vkSetSwapchainPresentTimingQueueSizeEXT =
+    unsafe extern "system" fn(_device: Device, _swapchain: SwapchainKHR, _size: u32) -> Result;
 
 /// <https://www.khronos.org/registry/vulkan/specs/latest/man/html/vkSignalSemaphore.html>
 pub type PFN_vkSignalSemaphore =
