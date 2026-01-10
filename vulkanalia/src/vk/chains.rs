@@ -2154,6 +2154,13 @@ unsafe impl InputChainStruct for DataGraphPipelinePropertyQueryResultARM {
     }
 }
 
+unsafe impl OutputChainStruct for DataGraphPipelinePropertyQueryResultARM {
+    #[inline]
+    fn next_mut(&self) -> *mut c_void {
+        self.next
+    }
+}
+
 unsafe impl InputChainStruct for DataGraphPipelineResourceInfoARM {
     const TYPE: StructureType = StructureType::DATA_GRAPH_PIPELINE_RESOURCE_INFO_ARM;
 
@@ -2179,6 +2186,13 @@ unsafe impl InputChainStruct for DataGraphPipelineSessionBindPointRequirementARM
 
     #[inline]
     fn next(&self) -> *const c_void {
+        self.next
+    }
+}
+
+unsafe impl OutputChainStruct for DataGraphPipelineSessionBindPointRequirementARM {
+    #[inline]
+    fn next_mut(&self) -> *mut c_void {
         self.next
     }
 }
@@ -16106,6 +16120,13 @@ unsafe impl InputChainStruct for QueueFamilyDataGraphProcessingEnginePropertiesA
     }
 }
 
+unsafe impl OutputChainStruct for QueueFamilyDataGraphProcessingEnginePropertiesARM {
+    #[inline]
+    fn next_mut(&self) -> *mut c_void {
+        self.next
+    }
+}
+
 unsafe impl InputChainStruct for QueueFamilyDataGraphPropertiesARM {
     const TYPE: StructureType = StructureType::QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM;
 
@@ -16116,6 +16137,13 @@ unsafe impl InputChainStruct for QueueFamilyDataGraphPropertiesARM {
 
     #[inline]
     fn next(&self) -> *const c_void {
+        self.next
+    }
+}
+
+unsafe impl OutputChainStruct for QueueFamilyDataGraphPropertiesARM {
+    #[inline]
+    fn next_mut(&self) -> *mut c_void {
         self.next
     }
 }

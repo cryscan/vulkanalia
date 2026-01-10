@@ -1,3 +1,29 @@
+## [0.36.0] - UNRELEASED
+
+### Bindings Updates
+- [CMake documentation to make things clearer](https://github.com/KhronosGroup/Vulkan-Headers/commit/df274657d83f3bd8c77aef816c1cbf27352a948b)
+- [Disable module workflows entirely until CMake has stabilised `import std`](https://github.com/KhronosGroup/Vulkan-Headers/commit/09da66815c42e3de2625c8a78f00ccf05f95fe61)
+- [Remove module config flags from CMake and CI](https://github.com/KhronosGroup/Vulkan-Headers/commit/1a134bcb8e3058bcf8ab2c55d04b242d38d13ba6)
+- [Minor fixes to correct `BASE_DIR` and installation directories with/without module target](https://github.com/KhronosGroup/Vulkan-Headers/commit/e64c17c1f9dee8a89ed0430cfcc1a881708f4cc0)
+- [Simplify setting up and installing the Vulkan-Hpp C++20 module](https://github.com/KhronosGroup/Vulkan-Headers/commit/e28da6cab79a4dc609f3389499772d7bd7cf9b8e)
+- [Update for Vulkan-Docs 1.4.331](https://github.com/KhronosGroup/Vulkan-Headers/commit/766aaabe571fa32c53606085775340b78ab8d728)
+- [Update for Vulkan-Docs 1.4.332](https://github.com/KhronosGroup/Vulkan-Headers/commit/3dda5a1a87b62fdf3baf4680edc41c00e85a7a22)
+- [Update for Vulkan-Docs 1.4.333](https://github.com/KhronosGroup/Vulkan-Headers/commit/39c50d7bf094853a1f9a2e8a7e3377d425ae0c6a)
+- [Update for Vulkan-Docs 1.4.334](https://github.com/KhronosGroup/Vulkan-Headers/commit/6aefb8eb95c8e170d0805fd0f2d02832ec1e099a)
+- [build(deps): bump actions/checkout from 5 to 6](https://github.com/KhronosGroup/Vulkan-Headers/commit/65586d13fb197279942581ba9c2eb2c6b664487c)
+- [Update for Vulkan-Docs 1.4.335](https://github.com/KhronosGroup/Vulkan-Headers/commit/2fa203425eb4af9dfc6b03f97ef72b0b5bcb8350)
+- [Update for Vulkan-Docs 1.4.336](https://github.com/KhronosGroup/Vulkan-Headers/commit/8a1e5840e7833a90b79c3fddb639f57c3772a641)
+- [Update for Vulkan-Docs 1.4.337](https://github.com/KhronosGroup/Vulkan-Headers/commit/450bd2232225d6c7728a4108055ac2e37cef6475)
+- [Do not run CI when pushing tags (#2635)](https://github.com/KhronosGroup/Vulkan-Docs/commit/cc750275c5bd7158c7b04a870c065b991b436441)
+- [Fix more issues in `ChangeLog.adoc` (#2637)](https://github.com/KhronosGroup/Vulkan-Docs/commit/8ae4650710cc67941a4caf807ef23c76cdc97059)
+- [Add space before open parenthesis of abbreviation (#2642)](https://github.com/KhronosGroup/Vulkan-Docs/commit/af0cb24ad8daa1d5f5a81d8e5978fd6d6d774984)
+- [Elide duplicate API markup macros in `ChangeLog.adoc` (#2639)](https://github.com/KhronosGroup/Vulkan-Docs/commit/5b497058757770aafc25acb27127e2152d86f742)
+- [Resolve wrong number of colons around `pname` macro (#2638)](https://github.com/KhronosGroup/Vulkan-Docs/commit/a3ebdb6a05a33a199eaac56667facdff336d1c49)
+- [Correct sname: to slink: in a few cases brought up by #2638. N.b. there are others and they are not going to be fixed right now because it would be a lot of churn.](https://github.com/KhronosGroup/Vulkan-Docs/commit/2492aeef167562441718850b0ae9db67719af3ca)
+- [Fix vk_icd/vk_layer type redefinition error](https://github.com/KhronosGroup/Vulkan-Headers/commit/0aae9c6b5f99d63a5eb7d69a3a1a95e2fa239bc2)
+- [January 10, 2026 Vulkan 1.4.338 spec update](https://github.com/KhronosGroup/Vulkan-Docs/commit/77466c6baac3c9fade77eda4a0db7158c809e98a)
+- [Update for Vulkan-Docs 1.4.338](https://github.com/KhronosGroup/Vulkan-Headers/commit/0777a3ad88bad5f4b11cfd509458bbc0ddadc773)
+
 ## [0.35.0] - UNRELEASEAD
 
 ### Changed
