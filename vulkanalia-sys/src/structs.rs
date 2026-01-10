@@ -4529,7 +4529,7 @@ unsafe impl Sync for DataGraphPipelineInfoARM {}
 #[derive(Copy, Clone, Debug, Eq, Hash, PartialEq)]
 pub struct DataGraphPipelinePropertyQueryResultARM {
     pub s_type: StructureType,
-    pub next: *const c_void,
+    pub next: *mut c_void,
     pub property: DataGraphPipelinePropertyARM,
     pub is_text: Bool32,
     pub data_size: usize,
@@ -4541,7 +4541,7 @@ impl Default for DataGraphPipelinePropertyQueryResultARM {
     fn default() -> Self {
         Self {
             s_type: StructureType::DATA_GRAPH_PIPELINE_PROPERTY_QUERY_RESULT_ARM,
-            next: ptr::null(),
+            next: ptr::null_mut(),
             property: DataGraphPipelinePropertyARM::default(),
             is_text: Bool32::default(),
             data_size: usize::default(),
@@ -4585,7 +4585,7 @@ unsafe impl Sync for DataGraphPipelineResourceInfoARM {}
 #[derive(Copy, Clone, Debug, Eq, Hash, PartialEq)]
 pub struct DataGraphPipelineSessionBindPointRequirementARM {
     pub s_type: StructureType,
-    pub next: *const c_void,
+    pub next: *mut c_void,
     pub bind_point: DataGraphPipelineSessionBindPointARM,
     pub bind_point_type: DataGraphPipelineSessionBindPointTypeARM,
     pub num_objects: u32,
@@ -4596,7 +4596,7 @@ impl Default for DataGraphPipelineSessionBindPointRequirementARM {
     fn default() -> Self {
         Self {
             s_type: StructureType::DATA_GRAPH_PIPELINE_SESSION_BIND_POINT_REQUIREMENT_ARM,
-            next: ptr::null(),
+            next: ptr::null_mut(),
             bind_point: DataGraphPipelineSessionBindPointARM::default(),
             bind_point_type: DataGraphPipelineSessionBindPointTypeARM::default(),
             num_objects: u32::default(),
@@ -26200,7 +26200,7 @@ unsafe impl Sync for QueueFamilyCheckpointPropertiesNV {}
 #[derive(Copy, Clone, Debug, Eq, Hash, PartialEq)]
 pub struct QueueFamilyDataGraphProcessingEnginePropertiesARM {
     pub s_type: StructureType,
-    pub next: *const c_void,
+    pub next: *mut c_void,
     pub foreign_semaphore_handle_types: ExternalSemaphoreHandleTypeFlags,
     pub foreign_memory_handle_types: ExternalMemoryHandleTypeFlags,
 }
@@ -26210,7 +26210,7 @@ impl Default for QueueFamilyDataGraphProcessingEnginePropertiesARM {
     fn default() -> Self {
         Self {
             s_type: StructureType::QUEUE_FAMILY_DATA_GRAPH_PROCESSING_ENGINE_PROPERTIES_ARM,
-            next: ptr::null(),
+            next: ptr::null_mut(),
             foreign_semaphore_handle_types: ExternalSemaphoreHandleTypeFlags::default(),
             foreign_memory_handle_types: ExternalMemoryHandleTypeFlags::default(),
         }
@@ -26225,7 +26225,7 @@ unsafe impl Sync for QueueFamilyDataGraphProcessingEnginePropertiesARM {}
 #[derive(Copy, Clone, Debug, Eq, Hash, PartialEq)]
 pub struct QueueFamilyDataGraphPropertiesARM {
     pub s_type: StructureType,
-    pub next: *const c_void,
+    pub next: *mut c_void,
     pub engine: PhysicalDeviceDataGraphProcessingEngineARM,
     pub operation: PhysicalDeviceDataGraphOperationSupportARM,
 }
@@ -26235,7 +26235,7 @@ impl Default for QueueFamilyDataGraphPropertiesARM {
     fn default() -> Self {
         Self {
             s_type: StructureType::QUEUE_FAMILY_DATA_GRAPH_PROPERTIES_ARM,
-            next: ptr::null(),
+            next: ptr::null_mut(),
             engine: PhysicalDeviceDataGraphProcessingEngineARM::default(),
             operation: PhysicalDeviceDataGraphOperationSupportARM::default(),
         }
